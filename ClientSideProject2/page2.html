@@ -1,0 +1,87 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+
+    <!-- Import every single goddamn atom in the entire freaking universe. -->
+    <link href="bootstrap/css/bootstrap-grid.css" rel="stylesheet" />
+    <link href="bootstrap/css/bootstrap-grid.min.css" rel="stylesheet" />
+    <link href="bootstrap/css/bootstrap-grid.rtl.css" rel="stylesheet" />
+    <link href="bootstrap/css/bootstrap-grid.rtl.min.css" rel="stylesheet" />
+    <link href="bootstrap/css/bootstrap-reboot.css" rel="stylesheet" />
+    <link href="bootstrap/css/bootstrap-reboot.min.css" rel="stylesheet" />
+    <link href="bootstrap/css/bootstrap-reboot.rtl.css" rel="stylesheet" />
+    <link href="bootstrap/css/bootstrap-reboot.rtl.min.css" rel="stylesheet" />
+    <link href="bootstrap/css/bootstrap-utilities.css" rel="stylesheet" />
+    <link href="bootstrap/css/bootstrap-utilities.min.css" rel="stylesheet" />
+    <link href="bootstrap/css/bootstrap-utilities.rtl.css" rel="stylesheet" />
+    <link href="bootstrap/css/bootstrap-utilities.rtl.min.css" rel="stylesheet" />
+    <link href="bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="bootstrap/css/bootstrap.rtl.css" rel="stylesheet" />
+    <link href="bootstrap/css/bootstrap.rtl.min.css" rel="stylesheet" />
+    <script src="Scripts/jquery-3.6.0.js"></script>
+    <!-- TODO Kevin: We should probably trim this down a bit... once we know what we need. -->
+
+    <!-- Our stuff. -->
+    <script src="Scripts/MakeNavBar.js"></script>
+    <link href="CSS/page2.css" rel="stylesheet" />
+    <link href="CSS/stylesheet.css" rel="stylesheet" />
+
+</head>
+<body onload="$(document).ready(MakeTopNavBar());">
+
+    <div id="TopNavigationBar"></div>
+
+    <!-- Taken from: https://getbootstrap.com/docs/4.0/content/tables/ -->
+    <table class="table table-striped bg-light" id="crimetable">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Major Crimes</th>
+                <th scope="col">Minor Crimes</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>Stole milk</td>
+                <td>Mildly annoying</td>
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+                <td>Running really fast</td>
+                <td>Perfect backwards shooting for optimal boost</td>
+            </tr>
+            <tr>
+                <th scope="row">3</th>
+                <td>Smelly code</td>
+                <td>the Bird</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <img id="sinkimg" src="Content/soviet-sink-KGB.png" alt="Soviet sink" onclick="enhanceSoviet();" />
+
+
+    <div class="footer">
+        <p id="subjectlog">Former KGB-member soviet ghost sink caught on camera !!!1!11! (GONE WRONG) (͡ ° ͜ʖ ͡ °)</p>
+        <p id="imgHint">Click on image to enhance.</p>
+    </div>>
+
+</body>
+</html>
+
+<script type="text/javascript">
+    function enhanceSoviet() {
+        $("#sinkimg").attr("src", "Content/soviet-sink-KGB-ring.png");  // Change the image to contain a ring using JQuery.
+        $("#imgHint").text("Good job m8 ¬‿¬");  // Change the text of the footer using JQuery.
+
+        var myImg = document.getElementById("sinkimg");
+        var currWidth = myImg.clientWidth;
+        if (myImg.clientHeight < screen.height / 1.4) {
+            myImg.style.width = (currWidth + 50) + "px";
+        }
+    }
+</script>

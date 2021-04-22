@@ -1,0 +1,7 @@
+﻿body {
+    background-color: orangered;
+}
+
+#sinkimg {
+    transition: transform 0.5s;
+}

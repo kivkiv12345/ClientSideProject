@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Beware of sinks!</title>
+
+    <!-- Import every single goddamn atom in the entire freaking universe. -->
+    <link href="bootstrap/css/bootstrap-grid.css" rel="stylesheet" />
+    <link href="bootstrap/css/bootstrap-grid.min.css" rel="stylesheet" />
+    <link href="bootstrap/css/bootstrap-grid.rtl.css" rel="stylesheet" />
+    <link href="bootstrap/css/bootstrap-grid.rtl.min.css" rel="stylesheet" />
+    <link href="bootstrap/css/bootstrap-reboot.css" rel="stylesheet" />
+    <link href="bootstrap/css/bootstrap-reboot.min.css" rel="stylesheet" />
+    <link href="bootstrap/css/bootstrap-reboot.rtl.css" rel="stylesheet" />
+    <link href="bootstrap/css/bootstrap-reboot.rtl.min.css" rel="stylesheet" />
+    <link href="bootstrap/css/bootstrap-utilities.css" rel="stylesheet" />
+    <link href="bootstrap/css/bootstrap-utilities.min.css" rel="stylesheet" />
+    <link href="bootstrap/css/bootstrap-utilities.rtl.css" rel="stylesheet" />
+    <link href="bootstrap/css/bootstrap-utilities.rtl.min.css" rel="stylesheet" />
+    <link href="bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="bootstrap/css/bootstrap.rtl.css" rel="stylesheet" />
+    <link href="bootstrap/css/bootstrap.rtl.min.css" rel="stylesheet" />
+    <script src="Scripts/jquery-3.6.0.js"></script>
+    <!-- TODO Kevin: We should probably trim this down a bit... once we know what we need. -->
+
+    <!-- Our stuff. -->
+    <script src="Scripts/MakeNavBar.js"></script>
+    <link href="CSS/index.css" rel="stylesheet" />
+    <link href="CSS/stylesheet.css" rel="stylesheet" />
+
+</head>
+
+<body onload="$(document).ready(MakeTopNavBar());">
+
+    <div id="TopNavigationBar"></div>
+
+    <img id="sinkimg" src="../Content/the-sink-is-very-dirty.jpg" alt="Dirty sink goes here!" style="width: 5px; height: auto;" onclick="sinkclick()"/>
+
+    <div class="footer">
+        <b>All hail the great mighty slightly dirty sink of doom!!!</b>
+    </div>
+
+</body><
+
+</html>
+
+<script type="text/javascript">
+
+    var sinkAngle = 90;
+    var img = document.getElementById("sinkimg");
+
+    function startsink() {
+        var currentwidth = img.clientWidth;
+
+        img.style.width = (currentwidth + currentwidth / 8) + "px";
+
+        if (img.clientWidth < screen.width - (screen.width / 10)) {
+            setTimeout(startsink, 20);
+            sinkAngle += 45;
+        } else {
+            sinkAngle = 1395;
+        }
+
+        $('#sinkimg').css('transform', 'rotate(' + sinkAngle + 'deg)');
+    }
+
+    function sinkclick() {
+        sinkAngle += 45;
+        $('#sinkimg').css('transform', 'rotate(' + sinkAngle + 'deg)');
+    }
+
+    $(document).ready(startsink());
+
+</script>

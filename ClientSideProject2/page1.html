@@ -1,0 +1,99 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+
+    <!-- Import every single goddamn atom in the entire freaking universe. -->
+    <link href="bootstrap/css/bootstrap-grid.css" rel="stylesheet" />
+    <link href="bootstrap/css/bootstrap-grid.min.css" rel="stylesheet" />
+    <link href="bootstrap/css/bootstrap-grid.rtl.css" rel="stylesheet" />
+    <link href="bootstrap/css/bootstrap-grid.rtl.min.css" rel="stylesheet" />
+    <link href="bootstrap/css/bootstrap-reboot.css" rel="stylesheet" />
+    <link href="bootstrap/css/bootstrap-reboot.min.css" rel="stylesheet" />
+    <link href="bootstrap/css/bootstrap-reboot.rtl.css" rel="stylesheet" />
+    <link href="bootstrap/css/bootstrap-reboot.rtl.min.css" rel="stylesheet" />
+    <link href="bootstrap/css/bootstrap-utilities.css" rel="stylesheet" />
+    <link href="bootstrap/css/bootstrap-utilities.min.css" rel="stylesheet" />
+    <link href="bootstrap/css/bootstrap-utilities.rtl.css" rel="stylesheet" />
+    <link href="bootstrap/css/bootstrap-utilities.rtl.min.css" rel="stylesheet" />
+    <link href="bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="bootstrap/css/bootstrap.rtl.css" rel="stylesheet" />
+    <link href="bootstrap/css/bootstrap.rtl.min.css" rel="stylesheet" />
+    <script src="Scripts/jquery-3.6.0.js"></script>
+    <!-- TODO Kevin: We should probably trim this down a bit... once we know what we need. -->
+    <!-- Our stuff. -->
+    <script src="Scripts/MakeNavBar.js"></script>
+    <link href="CSS/page1.css" rel="stylesheet" />
+    <link href="CSS/stylesheet.css" rel="stylesheet" />
+
+</head>
+<body onload="$(document).ready(MakeTopNavBar());">
+
+    <div id="TopNavigationBar"></div>
+
+    <div>
+        <img id="sinkimg" src="Content/IMG_20210413_112220.jpg" alt="Inmate sink" onclick="nextImg();" />
+        <div id="myProgress">
+            <div id="myBar">10%</div>
+        </div>
+    </div>
+
+   
+
+    <div class="footer">
+        <p id="subjectlog">
+            subject #1 has been imprisoned in your basement since 1973 when he was caught trying to smuggle expired milk into eastern Berlin.
+            <br />
+            These pictures show the subject's futile attempts to scale your basement wall.
+        </p>
+    </div>
+
+</body>
+</html>
+
+<script type="text/javascript">
+    var pictures = ["IMG_20210413_112220.jpg", "IMG_20210413_112223.jpg", "IMG_20210413_112249.jpg", "IMG_20210413_112329.jpg", "IMG_20210413_112335.jpg"];
+    var imgindex = 1;
+
+    $(document).ready(function () {
+        fixImgSize();
+        move();
+    });
+
+    var pid;
+    var progress = 0;
+    function move() {  // Taken from: https://www.w3schools.com/howto/howto_js_progressbar.asp
+        if (progress == 0) {
+            progress = 1;
+            var elem = document.getElementById("myBar");
+            var width = 1;
+            pid = setInterval(frame, 50);
+            function frame() {
+                if (width >= 100) {
+                    nextImg();
+                } else {
+                    width++;
+                    elem.style.width = width + "%";
+                    elem.innerHTML = width + "%";
+                }
+            }
+        }
+    }
+
+    function fixImgSize() {
+        $("#sinkimg").css("height", screen.height - screen.height / 3);
+        $("#myProgress").css("max-width", document.getElementById("sinkimg").clientWidth);
+    }
+
+    function nextImg() {
+        clearInterval(pid);
+        progress = 0;
+        imgindex = (imgindex + 1) % pictures.length;
+        $("#sinkimg").attr("src", "Content/" + pictures[imgindex]);
+        // $("#sinkimg").css("width", screen.height); // Image size may also be adjusted according to the screen height.
+        fixImgSize(); // We assume pictures to have different sizes, so we fix the size on each change.
+        move();
+    }
+</script>
